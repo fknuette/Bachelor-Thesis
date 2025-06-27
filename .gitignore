@@ -1,0 +1,6 @@
+__pycache__/
+ignore/
+.vscode/
+.ipynb_checkpoints
+miniconda3/
+cache/

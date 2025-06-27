@@ -1,0 +1,1 @@
+python ../scripts/deep.py --dataset square --dataset_path /pfs/work7/workspace/scratch/ma_fknuette-project_GRANDE/1_jovita/cifar10/single --max_epoch 100 --seed_num 2 --model_type grande --cat_policy indices --objectives 1 --use_float16

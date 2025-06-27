@@ -1,0 +1,1 @@
+python evaluate.py --model Epoch100BZ1024-Norm-standard-Nan-mean-new-Cat-indices-Depth-3-Estimators-500 --objective clean_fgsm 

@@ -1,0 +1,1 @@
+python ./train_model_deep.py --dataset mfeat-factors --dataset_path /pfs/work7/workspace/scratch/ma_fknuette-project_GRANDE/LAMDA-TALENT/example_datasets/ --max_epoch 3 --seed_num 2 --model_type grande --cat_policy indices 

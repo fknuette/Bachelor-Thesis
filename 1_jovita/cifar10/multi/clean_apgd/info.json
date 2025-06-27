@@ -1,0 +1,25 @@
+{
+    "task_type": "regression",
+    "n_num_features": 15,
+    "n_cat_features": 0,
+    "train_size": 4137,
+    "val_size": 1035,
+    "test_size": 1294,
+    "num_feature_intro": {
+        "epe_nas": "epe_nas",
+        "fisher": "fisher",
+        "flops": "flops",
+        "grad_norm": "grad_norm",
+        "grasp": "grasp",
+        "jacov": "jacov",
+        "l2_norm": "l2_norm",
+        "nwot": "nwot",
+        "params": "params",
+        "plain": "plain",
+        "snip": "snip",
+        "synflow": "synflow",
+        "zen": "zen",
+        "hessian": "hessian",
+        "jacob_fro": "jacob_fro"
+    }
+}

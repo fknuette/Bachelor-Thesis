@@ -1,0 +1,19 @@
+{
+    "grande": {
+        "model": {
+            "depth": 3,
+            "n_estimators": 500,
+            "from_logits": true,
+            "use_class_weights": true,
+            "selected_variables": 0.8,
+            "data_subset_fraction": 1.0,
+            "dropout": 0.0,
+            "bootstrap": false
+        },
+        "training": {
+            "lr": 0.01,
+            "weight_decay": 1e-05
+        },
+        "general": {}
+    }
+}
