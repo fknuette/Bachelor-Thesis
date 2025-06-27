@@ -1,14 +1,89 @@
-# Bachorthesis
-Frist how goe the setup. We advice that you should do a conda environment for TabPFN and GRANDE (For this go in TabPFN folder and do pip install . (For GRANDE you go in the Lambda Talent folder and do the same there)).
-For the calculation we advicer that you should use a gpu which could acuired by bash gpu.sh.
 
-For usage first determine that you have the ritght conda environment activate. Here we will enumerate which file you shoud use for getting the rigth results. 
-changeDeepthAndEstimatorForHP.py : here you can change the HPs depth and estimator for the corresponding objective
-ScatterPlotForRobustnessClean.ipynb : here you can see the plotting of the correlation between clean accuracy and robust accuracies (for demonstration you use the python notepad)
-1_jovita : is the folder where you can find the GRADE Execution for the dataset, here you will find there different dataset (The content of them is build equally); In on folder for a dataset you go in the execute folder and then you will see three bash scripts. (First train_single.sh, here you train on single objective, Second train_multi.sh you train on multi-objective, thirdly evaluate.sh where you evaluate the model and get the permutation importance)
-TabPFN : here is the execution of TabPFN, you must go in examples and then you choose single or multi objective; In single objective you run the script ZCP_Single.py here are the calculation of accuracy and permutation importance; (In folder Multi_Objective you can decide between accuracy and permutation importance; for accuracy you must first generate the data with Datagenerator_for_Linear_Regressor.py then you can execute fast_linear_regressor.py in Linear_Regressor; permutation_Importance you find permuation_importance_multi.py where you can caculate with permutation importance)
+# Bachelor Thesis – Setup and Execution Guide
 
-Note that for Datagenerator_for_Linear_Regressor.py, permuation_importance_multi.py, ZCP_Single.py you have arguments --dataset (for dataset cifar10,cifar100,imageNet), --objective(clean,fgsm,pgd,apgd,square,clean_fgsm,clean_pgd,clean_apgd,clean_square) and --seed_num (Here you set the seedNumber)
-For changeDeepthAndEstimatorForHP.py you have --depth (depth of tree take an integer), --objective (objective like above), --n_estimators(number of the estimators take a integer)
+## 1. Environment Setup
 
-Rest of the folder which has no direkt funktionarlity: in material_for_Thesis you find some pngs which are pre-calculated, LAMDA-TALENT this is the grundgerüst for GRANDE, data/result here are the data stored
+We recommend creating dedicated **Conda environments** for both *TabPFN* and *GRANDE* to ensure smooth execution.
+
+### TabPFN Installation
+Navigate to the `TabPFN` folder and run:
+```bash
+pip install .
+```
+
+### GRANDE Installation
+Navigate to the `LAMDA-TALENT` folder and run:
+```bash
+pip install .
+```
+
+### GPU Usage
+To use GPU resources, you can activate them via:
+```bash
+bash gpu.sh
+```
+
+---
+
+## 2. Running Experiments
+
+Make sure the correct **Conda environment** is activated before running any scripts. Below is an overview of the key scripts and folders required to reproduce the results.
+
+### a) Tuning Hyperparameters
+
+- **Script**: `changeDeepthAndEstimatorForHP.py`  
+  Use this script to modify tree depth and number of estimators for a given objective.  
+  **Arguments**:
+  - `--depth` (int): Tree depth
+  - `--n_estimators` (int): Number of estimators
+  - `--objective` (str): One of `clean`, `fgsm`, `pgd`, `apgd`, `square`, `clean_fgsm`, `clean_pgd`, `clean_apgd`, `clean_square`
+
+### b) Robustness Visualization
+
+- **Notebook**: `ScatterPlotForRobustnessClean.ipynb`  
+  Plots correlation between clean accuracy and various robustness metrics. You can open this using Jupyter or a Python-compatible editor (e.g., Notepad++).
+
+### c) GRANDE Execution
+
+- **Folder**: `1_jovita`  
+  Contains experiment runs for different datasets.
+
+  Inside each dataset folder, go to `execute/` and use the following bash scripts:
+  - `train_single.sh`: Single-objective training
+  - `train_multi.sh`: Multi-objective training
+  - `evaluate.sh`: Evaluation script including permutation importance calculation
+
+### d) TabPFN Execution
+
+- **Folder**: `TabPFN/examples`
+
+  #### Single Objective:
+  - `ZCP_Single.py`: Computes accuracy and permutation importance
+
+  #### Multi Objective:
+  - `Datagenerator_for_Linear_Regressor.py`: Generates synthetic data
+  - `fast_linear_regressor.py`: Performs accuracy calculation
+  - `permuation_importance_multi.py`: Computes permutation importance
+
+  **Common arguments** for `ZCP_Single.py`, `Datagenerator_for_Linear_Regressor.py`, and `permuation_importance_multi.py`:
+  - `--dataset`: One of `cifar10`, `cifar100`, `imagenet`
+  - `--objective`: As listed above
+  - `--seed_num`: Set a seed for reproducibility
+
+---
+
+## 3. Additional Folder Descriptions
+
+- **`material_for_Thesis/`**  
+  Contains precomputed PNG images used for visualization in the thesis.
+
+- **`LAMDA-TALENT/`**  
+  Core implementation of the GRANDE model.
+
+- **`data/result/`**  
+  Stores all result files generated by experiments.  
+  👉 Please create a clear and structured `README.md` in this folder explaining the directory structure and contents.
+
+---
+
+Let us know if you need additional guidance or help with setting up your experiments.
